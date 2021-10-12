@@ -6,7 +6,7 @@ metadata:
 spec:
   title: Client
   description: Describe your new bucket
-  icon: view_stream
+  icon: account_circle
   primary: name
   readOnly: false
   history: false
@@ -58,7 +58,7 @@ spec:
     0 = Waiting
     1 = Joined
     -1 = Did Not Join
-  icon: view_stream
+  icon: today
   primary: client_status
   readOnly: false
   history: false
@@ -133,7 +133,7 @@ metadata:
 spec:
   title: Employee
   description: Describe your new bucket
-  icon: view_stream
+  icon: badge
   primary: name
   readOnly: false
   history: false
@@ -245,7 +245,7 @@ metadata:
 spec:
   title: Rating
   description: Describe your new bucket
-  icon: view_stream
+  icon: star
   primary: comment
   readOnly: false
   history: false
@@ -281,7 +281,7 @@ metadata:
 spec:
   title: Branch
   description: Describe your new bucket
-  icon: view_stream
+  icon: apartment
   primary: name
   readOnly: false
   history: false
@@ -359,7 +359,7 @@ metadata:
 spec:
   title: Client
   description: Describe your new bucket
-  icon: view_stream
+  icon: account_circle
   primary: name
   readOnly: false
   history: false
@@ -422,7 +422,7 @@ spec:
     0 = Waiting
     1 = Joined
     -1 = Did Not Join
-  icon: view_stream
+  icon: today
   primary: client_status
   readOnly: false
   history: false
@@ -552,7 +552,7 @@ metadata:
 spec:
   title: Employee
   description: Describe your new bucket
-  icon: view_stream
+  icon: badge
   primary: name
   readOnly: false
   history: false
@@ -700,7 +700,7 @@ metadata:
 spec:
   title: Service
   description: Describe your new bucket
-  icon: view_stream
+  icon: cases
   primary: name
   readOnly: false
   history: false
@@ -738,7 +738,7 @@ metadata:
 spec:
   title: Rating
   description: Describe your new bucket
-  icon: view_stream
+  icon: star
   primary: comment
   readOnly: false
   history: false
@@ -785,7 +785,7 @@ metadata:
 spec:
   title: Branch
   description: Describe your new bucket
-  icon: view_stream
+  icon: apartment
   primary: name
   readOnly: false
   history: false
@@ -874,7 +874,7 @@ metadata:
 spec:
   title: Public Holiday
   description: Describe your new bucket
-  icon: view_stream
+  icon: domain_disabled
   primary: name
   readOnly: false
   history: false
@@ -933,4 +933,4 @@ spec:
     bucket:
       resourceFieldRef:
         schemaName: rating-bucket
-    type: ALL
+    type: INSERT
