@@ -2,7 +2,7 @@
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: client-bucket
+  name: spica-appointment-asset-client-bucket
 spec:
   title: Client
   description: Describe your new bucket
@@ -29,366 +29,24 @@ spec:
       description: Description of the identity_id input
       options:
         position: bottom
-    age:
-      type: number
-      title: age
-      description: Description of the age input
+    phone:
+      type: string
+      title: phone
+      description: Description of the phone input
       options:
         position: bottom
-      minimum: 0
-  acl:
-    write: true==true
-    read: true==true
-  order: 0
----
-# BUCKET - Appointment
-apiVersion: bucket/v1
-kind: Schema
-metadata:
-  name: appointment-bucket
-spec:
-  title: Appointment
-  description: |-
-    employee_status
-    0 = Pending
-    -1 = Rejected
-    1 = Accepted
-
-    client_status
-    0 = Waiting
-    1 = Joined
-    -1 = Did Not Join
-  icon: today
-  primary: client_status
-  readOnly: false
-  history: false
-  properties:
-    from:
+    email:
+      type: string
+      title: email
+      description: Description of the email input
+      options:
+        position: bottom
+    date_of_birth:
       type: date
-      title: from
-      description: Description of the from input
+      title: date_of_birth
+      description: Description of the date_of_birth input
       options:
         position: bottom
-    until:
-      type: date
-      title: until
-      description: Description of the until input
-      options:
-        position: bottom
-    created_at:
-      type: date
-      title: created_at
-      description: Description of the created_at input
-      options:
-        position: bottom
-      default: :created_at
-    last_update:
-      type: date
-      title: last_update
-      description: Description of the last_update input
-      options:
-        position: bottom
-      default: :updated_at
-    client_status:
-      type: number
-      title: client_status
-      description: |-
-        0 = Waiting
-        1 = Joined
-        -1 = Did Not Join
-
-        Default: 0
-      options:
-        position: bottom
-      default: 0
-      enum:
-        - -1
-        - 0
-        - 1
-    employee_status:
-      type: number
-      title: employee_status
-      description: |-
-        employee_status
-        0 = Pending
-        -1 = Rejected
-        1 = Accepted
-      options:
-        position: bottom
-      default: 0
-      enum:
-        - -1
-        - 0
-        - 1
-  acl:
-    write: true==true
-    read: true==true
-  order: 1
----
-# BUCKET - Employee
-apiVersion: bucket/v1
-kind: Schema
-metadata:
-  name: employee-bucket
-spec:
-  title: Employee
-  description: Describe your new bucket
-  icon: badge
-  primary: name
-  readOnly: false
-  history: false
-  properties:
-    name:
-      type: string
-      title: name
-      description: Description of the name input
-      options:
-        position: bottom
-    surname:
-      type: string
-      title: surname
-      description: Description of the surname input
-      options:
-        position: bottom
-    picture:
-      type: storage
-      title: picture
-      description: Description of the picture input
-      options:
-        position: bottom
-    working_hours:
-      type: array
-      title: working_hours
-      description: Description of the working_hours input
-      options:
-        position: bottom
-      items:
-        title: Title of the items
-        type: object
-        properties:
-          day_of_week:
-            type: number
-            title: day_of_week
-            description: Description of the day_of_week input
-            options:
-              position: bottom
-            enum:
-              - 1
-              - 2
-              - 3
-              - 4
-              - 5
-              - 6
-              - 7
-          hours:
-            type: array
-            title: hours
-            description: Description of the hours input
-            options:
-              position: bottom
-            items:
-              title: Title of the items
-              type: object
-              properties:
-                from:
-                  type: string
-                  title: from
-                  description: Description of the from input
-                  options:
-                    position: bottom
-                until:
-                  type: string
-                  title: until
-                  description: Description of the until input
-                  options:
-                    position: bottom
-    average_rating:
-      type: number
-      title: average_rating
-      description: Description of the average_rating input
-      options:
-        position: bottom
-      minimum: 0
-      maximum: 5
-    busy_hours:
-      type: array
-      title: busy_hours
-      description: Description of the busy_hours input
-      options:
-        position: bottom
-      items:
-        title: Title of the items
-        type: object
-        properties:
-          from:
-            type: date
-            title: from
-            description: Description of the from input
-            options:
-              position: bottom
-          until:
-            type: date
-            title: until
-            description: Description of the until input
-            options:
-              position: bottom
-  acl:
-    write: true==true
-    read: true==true
-  order: 2
----
-# BUCKET - Rating
-apiVersion: bucket/v1
-kind: Schema
-metadata:
-  name: rating-bucket
-spec:
-  title: Rating
-  description: Describe your new bucket
-  icon: star
-  primary: comment
-  readOnly: false
-  history: false
-  properties:
-    star:
-      type: number
-      title: star
-      description: Description of the star input
-      options:
-        position: bottom
-      enum:
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-    comment:
-      type: textarea
-      title: comment
-      description: Description of the comment input
-      options:
-        position: bottom
-  acl:
-    write: true==true
-    read: true==true
-  order: 4
----
-# BUCKET - Branch
-apiVersion: bucket/v1
-kind: Schema
-metadata:
-  name: branch-bucket
-spec:
-  title: Branch
-  description: Describe your new bucket
-  icon: apartment
-  primary: name
-  readOnly: false
-  history: false
-  properties:
-    name:
-      type: string
-      title: name
-      description: Description of the name input
-      options:
-        position: bottom
-    address:
-      type: textarea
-      title: address
-      description: Description of the address input
-      options:
-        position: bottom
-    working_hours:
-      type: array
-      title: working_hours
-      description: Description of the working_hours input
-      options:
-        position: bottom
-      items:
-        title: Title of the items
-        type: object
-        properties:
-          day_of_week:
-            type: number
-            title: day_of_week
-            description: Description of the day_of_week input
-            options:
-              position: bottom
-            enum:
-              - 1
-              - 2
-              - 3
-              - 4
-              - 5
-              - 6
-              - 7
-          hours:
-            type: array
-            title: hours
-            description: Description of the hours input
-            options:
-              position: bottom
-            items:
-              title: Title of the items
-              type: object
-              properties:
-                from:
-                  type: string
-                  title: from
-                  description: Description of the from input
-                  options:
-                    position: bottom
-                  pattern: ^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$
-                until:
-                  type: string
-                  title: until
-                  description: Description of the until input
-                  options:
-                    position: bottom
-                  pattern: ^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$
-  acl:
-    write: true==true
-    read: true==true
-  order: 5
----
-# BUCKET - Client
-apiVersion: bucket/v1
-kind: Schema
-metadata:
-  name: client-bucket
-spec:
-  title: Client
-  description: Describe your new bucket
-  icon: account_circle
-  primary: name
-  readOnly: false
-  history: false
-  properties:
-    name:
-      type: string
-      title: name
-      description: Description of the name input
-      options:
-        position: bottom
-    surname:
-      type: string
-      title: surname
-      description: Description of the surname input
-      options:
-        position: bottom
-    identity_id:
-      type: string
-      title: identity_id
-      description: Description of the identity_id input
-      options:
-        position: bottom
-    age:
-      type: number
-      title: age
-      description: Description of the age input
-      options:
-        position: bottom
-      minimum: 0
     appointments:
       type: relation
       title: appointments
@@ -399,7 +57,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: appointment-bucket
+          schemaName: spica-appointment-asset-appointment-bucket
   acl:
     write: true==true
     read: true==true
@@ -409,7 +67,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: appointment-bucket
+  name: spica-appointment-asset-appointment-bucket
 spec:
   title: Appointment
   description: |-
@@ -437,7 +95,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: client-bucket
+          schemaName: spica-appointment-asset-client-bucket
     from:
       type: date
       title: from
@@ -457,6 +115,12 @@ spec:
       options:
         position: bottom
       default: :created_at
+    note:
+      type: textarea
+      title: note
+      description: Description of the note input
+      options:
+        position: bottom
     last_update:
       type: date
       title: last_update
@@ -505,7 +169,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: employee-bucket
+          schemaName: spica-appointment-asset-employee-bucket
     service:
       type: relation
       title: service
@@ -516,7 +180,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: service-bucket
+          schemaName: spica-appointment-asset-service-bucket
     branch:
       type: relation
       title: branch
@@ -527,7 +191,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: branch-bucket
+          schemaName: spica-appointment-asset-branch-bucket
     rating:
       type: relation
       title: rating
@@ -538,7 +202,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: rating-bucket
+          schemaName: spica-appointment-asset-rating-bucket
   acl:
     write: true==true
     read: true==true
@@ -548,7 +212,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: employee-bucket
+  name: spica-appointment-asset-employee-bucket
 spec:
   title: Employee
   description: Describe your new bucket
@@ -557,6 +221,18 @@ spec:
   readOnly: false
   history: false
   properties:
+    username:
+      type: string
+      title: username
+      description: Description of the username input
+      options:
+        position: bottom
+    identity_id:
+      type: string
+      title: identity_id
+      description: Description of the identity_id input
+      options:
+        position: bottom
     name:
       type: string
       title: name
@@ -586,7 +262,7 @@ spec:
       primary: client_status
       bucket:
         resourceFieldRef:
-          schemaName: appointment-bucket
+          schemaName: spica-appointment-asset-appointment-bucket
     services:
       type: relation
       title: services
@@ -598,7 +274,7 @@ spec:
       primary: name
       bucket:
         resourceFieldRef:
-          schemaName: service-bucket
+          schemaName: spica-appointment-asset-service-bucket
     working_hours:
       type: array
       title: working_hours
@@ -656,7 +332,7 @@ spec:
       primary: name
       bucket:
         resourceFieldRef:
-          schemaName: branch-bucket
+          schemaName: spica-appointment-asset-branch-bucket
     average_rating:
       type: number
       title: average_rating
@@ -696,7 +372,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: service-bucket
+  name: spica-appointment-asset-service-bucket
 spec:
   title: Service
   description: Describe your new bucket
@@ -734,7 +410,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: rating-bucket
+  name: spica-appointment-asset-rating-bucket
 spec:
   title: Rating
   description: Describe your new bucket
@@ -771,7 +447,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: appointment-bucket
+          schemaName: spica-appointment-asset-appointment-bucket
   acl:
     write: true==true
     read: true==true
@@ -781,7 +457,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: branch-bucket
+  name: spica-appointment-asset-branch-bucket
 spec:
   title: Branch
   description: Describe your new bucket
@@ -860,7 +536,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: employee-bucket
+          schemaName: spica-appointment-asset-employee-bucket
   acl:
     write: true==true
     read: true==true
@@ -870,7 +546,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: public-holiday-bucket
+  name: spica-appointment-asset-public-holiday-bucket
 spec:
   title: Public Holiday
   description: Describe your new bucket
@@ -902,18 +578,31 @@ spec:
     read: true==true
   order: 6
 ---
+# API KEY
+apiVersion: passport/v1
+kind: ApiKey
+metadata:
+  name: appointment-asset-apikey
+spec:
+  name: Secret Api Key For Appointment
+  policies:
+    - BucketFullAccess
+    - FunctionFullAccess
+    - IdentityFullAccess
+---
 # FUNCTION - appointment
 apiVersion: function/v1
 kind: Function
 metadata:
-  name: appointment-function
+  name: spica-appointment-asset-appointment-function
 spec:
+  description: functions
   language: javascript
   timeout: 5
   dependency:
     - name: "@spica-devkit/bucket"
-      version: ^0.9.11
-  title: appointment
+      version: latest
+  title: Appointment
   code: ./function/appointment-function.js
   runtime:
     name: Node
@@ -928,9 +617,52 @@ spec:
   type: bucket
   active: true
   name: onRatingUpdate
-  func: appointment-function
+  func: spica-appointment-asset-appointment-function
   bucketOptions:
     bucket:
       resourceFieldRef:
-        schemaName: rating-bucket
+        schemaName: spica-appointment-asset-rating-bucket
     type: INSERT
+---
+# FUNCTION - Appointment Authorization
+apiVersion: function/v1
+kind: Function
+metadata:
+  name: spica-appointment-asset-authorization-function
+spec:
+  language: javascript
+  timeout: 25
+  description: Authorization process
+  environment:
+    - name: USER_BUCKET_ID
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-appointment-asset-employee-bucket
+    - name: SECRET_API_KEY
+      valueFrom:
+        resourceFieldRef:
+          apiKeyName: appointment-asset-apikey
+  dependency:
+    - name: "@spica-devkit/bucket"
+      version: latest
+    - name: "@spica-devkit/identity"
+      version: latest
+  title: Appointment Authorization
+  code: ./function/spica-appointment-asset-authorization-function.js
+  runtime:
+    name: Node
+    language: Javascript
+---
+# TRIGGER - register
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: register
+spec:
+  type: http
+  active: true
+  name: register
+  func: spica-appointment-asset-authorization-function
+  httpOptions:
+    method: Post
+    path: /register
